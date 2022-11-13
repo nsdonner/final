@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 
 void fillIt(short data[13][32][24][60]) {
     for (int mon = 0; mon < 13; mon++) {
@@ -108,14 +109,17 @@ short medTempinMonth(short data[13][32][24][60], int mon) {
     return med / count;
 }
 
+int tempMath(char filename[], int monthNum){
 
-int main() {
     FILE *f;
-    //char input[20] = {0};
     int a = 0;
     char s[10000];
     short data[13][32][24][60] = {0};
-    f = fopen("temperature_big.csv", "r");
+    f = fopen(filename, "r");
+    if (f == NULL){
+        printf("\n Can't open file %s\n",filename);
+        return 1;
+    }
     int year, month, day, hour, minute;
     short t;
 
@@ -146,6 +150,42 @@ int main() {
     printf("%d median temp is %hi\n", year, medTemp(data));
     printf("%d minimum temp is %hi\n", year, minTemp(data));
     printf("%d maximum temp is %hi\n", year, maxTemp(data));
+
+    return 0;
+
+}
+
+
+int main(int argc, char **argv) {
+
+    if ((argc > 5)||(argc == 4 )) {
+        printf("Error: found wrong arguments.");
+        return (1);
+    }
+    if (argc == 1) {
+        printf("Error: type -h for help");
+        return (1);
+    }
+    if (argc == 2) {
+        if (!strcmp(argv[1],"-h")){
+            printf("-h for this help message\n");
+            printf("-f for filename\n");
+            printf("-m for month number\n");
+            printf("\n Examples:\n");
+            printf("final.exe -h\n");
+            printf("final.exe -f temperature_big.csv\n");
+            printf("final.exe -f temperature_big.csv -m 5\n");
+            return (0);
+        } else printf("Error: type -h for help");
+        return (1);
+    }
+    if (argc == 3){
+        if (!strcmp(argv[1],"-f")) {
+            return(tempMath(argv[2],0));
+        }
+    }
+
+
 
 
     return 0;
