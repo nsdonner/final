@@ -5,6 +5,7 @@
 
 #include <stdio.h>
 #include "temp_functions.h"
+
 void fillIt(short data[13][32][24][60]) {
     for (int mon = 0; mon < 13; mon++) {
         for (int d = 0; d < 32; d++) {
@@ -93,7 +94,9 @@ short medTemp(short data[13][32][24][60]) {
             }
         }
     }
-
+    if (count == 0) {
+        return -100;
+    }
     return med / count;
 }
 
@@ -111,7 +114,9 @@ short medTempinMonth(short data[13][32][24][60], int mon) {
         }
     }
 
-
+    if (count == 0) {
+        return -100;
+    }
     return med / count;
 }
 
@@ -119,6 +124,7 @@ int tempMath(char filename[], int monthNum) {
 
     FILE *f;
     int a = 0;
+    char MONTH[13][10]={{""},{"January\0"},{"February\0"},{"March\0"},{"April\0"},{"May\0"},{"June\0"},{"July\0"},{"August\0"},{"September\0"},{"October\0"},{"November\0"},{"December\0"}};
     char s[10000];
     short data[13][32][24][60] = {0};
     f = fopen(filename, "r");
@@ -141,6 +147,7 @@ int tempMath(char filename[], int monthNum) {
         } else if (a != EOF) {
             printf("Error at line %d\n", i);
             fscanf(f, "%s", s);
+            //printf("%s\n",s);
         }
     }
     fclose(f);
@@ -148,19 +155,21 @@ int tempMath(char filename[], int monthNum) {
 
     if (monthNum == 0) {
         for (int i = 1; i < 13; i++) {
-            printf("Month %d median temp is %hi\n", i, medTempinMonth(data, i));
-            printf("Mont %d minimum temp is %hi\n", i, minTempinMonth(data, i));
-            printf("Mont %d maximum temp is %hi\n", i, maxTempinMonth(data, i));
+            if (medTempinMonth(data, i) == -100) {
+                printf("No data for %s\n", MONTH[i]);
+            } else {
+                printf("Temperature of %s: med: %hi, min %hi, max %hi\n", MONTH[i], medTempinMonth(data, i),minTempinMonth(data, i),maxTempinMonth(data, i));
+            }
         }
+    } else if (medTempinMonth(data, monthNum) == -100) {
+        printf("No data for %s\n", MONTH[monthNum]);
     } else {
-        printf("Month %d median temp is %hi\n", monthNum, medTempinMonth(data, monthNum));
-        printf("Mont %d minimum temp is %hi\n", monthNum, minTempinMonth(data, monthNum));
-        printf("Mont %d maximum temp is %hi\n", monthNum, maxTempinMonth(data, monthNum));
+        printf("Temperature of %s: med: %hi, min %hi, max %hi\n", MONTH[monthNum], medTempinMonth(data, monthNum),minTempinMonth(data, monthNum),maxTempinMonth(data, monthNum));
     }
 
-    printf("%d median temp is %hi\n", year, medTemp(data));
-    printf("%d minimum temp is %hi\n", year, minTemp(data));
-    printf("%d maximum temp is %hi\n", year, maxTemp(data));
+    printf("Temperature of %d: med: %hi, min %hi, max %hi\n", year, medTemp(data),minTemp(data),maxTemp(data));
+    //printf("%d minimum temp is %hi\n", year, minTemp(data));
+    //printf("%d maximum temp is %hi\n", year, maxTemp(data));
 
     return 0;
 
