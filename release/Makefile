@@ -10,4 +10,4 @@ temp_functions.o: temp_functions.c
 	gcc -c -o temp_functions.o temp_functions.c
 
 clean:
-	rm -rf *.0 final
+	rm -rf *.o final
