@@ -167,10 +167,15 @@ int tempMath(char filename[], int monthNum) {
         printf("Temperature of %s: med: %hi, min %hi, max %hi\n", MONTH[monthNum], medTempinMonth(data, monthNum),minTempinMonth(data, monthNum),maxTempinMonth(data, monthNum));
     }
 
-    printf("Temperature of %d: med: %hi, min %hi, max %hi\n", year, medTemp(data),minTemp(data),maxTemp(data));
+    if ((year>999) && (year<10000)) {
+        printf("Temperature of %d: med: %hi, min %hi, max %hi\n", year, medTemp(data), minTemp(data), maxTemp(data));
+        return 0;
+    } else{
+        printf("Error: no correct data in file");
+        return 1;
+    }
     //printf("%d minimum temp is %hi\n", year, minTemp(data));
     //printf("%d maximum temp is %hi\n", year, maxTemp(data));
 
-    return 0;
 
 }

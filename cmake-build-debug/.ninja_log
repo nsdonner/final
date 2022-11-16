@@ -1,7 +1,19 @@
 # ninja log v5
-3	234	6900811230889810	CMakeFiles/final.dir/main.c.obj	4d7a8962503b3bdd
-196	400	6902504876355395	final.exe	ad16bda1eba5a26c
-4	196	6902504874355390	CMakeFiles/final.dir/temp_functions.c.obj	aacd00ef437cc122
 2	183	6902993085006641	CMakeFiles/final.dir/main.c.obj	4d7a8962503b3bdd
-18	207	6902993085256652	CMakeFiles/final.dir/temp_functions.c.obj	aacd00ef437cc122
 207	441	6902993087546620	final.exe	ad16bda1eba5a26c
+18	207	6902993085256652	CMakeFiles/final.dir/temp_functions.c.obj	aacd00ef437cc122
+14	172	6903392548578858	CMakeFiles/final.dir/temp_functions.c.obj	aacd00ef437cc122
+4	177	6903392548638882	CMakeFiles/final.dir/main.c.obj	4d7a8962503b3bdd
+177	373	6903392550589066	final.exe	ad16bda1eba5a26c
+3	257	6903406314461990	CMakeFiles/final.dir/temp_functions.c.obj	aacd00ef437cc122
+258	505	6903406316932192	final.exe	ad16bda1eba5a26c
+3	167	6903415218999419	CMakeFiles/final.dir/main.c.obj	4d7a8962503b3bdd
+168	376	6903415221039565	final.exe	ad16bda1eba5a26c
+2	171	6903415608154033	CMakeFiles/final.dir/main.c.obj	4d7a8962503b3bdd
+172	401	6903415610453992	final.exe	ad16bda1eba5a26c
+4	158	6903419579431160	CMakeFiles/final.dir/main.c.obj	4d7a8962503b3bdd
+159	377	6903419581511173	final.exe	ad16bda1eba5a26c
+1	126	6903420142266244	CMakeFiles/final.dir/main.c.obj	4d7a8962503b3bdd
+126	314	6903420144086455	final.exe	ad16bda1eba5a26c
+2	190	6903424252836753	CMakeFiles/final.dir/main.c.obj	4d7a8962503b3bdd
+191	426	6903424255096757	final.exe	ad16bda1eba5a26c
