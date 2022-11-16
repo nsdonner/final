@@ -29,15 +29,28 @@ int main(int argc, char **argv) {
     }
     if (argc == 3) {
         if (!strcmp(argv[1], "-f")) {
-            return (tempMath(argv[2], 0));
+            int len = strlen(argv[2]);
+            if (!strcmp(argv[2]+len-4, ".csv")) {
+                return (tempMath(argv[2], 0));
+            } else {
+                printf("Error: file extension should be .csv");
+                return 1;
+            }
         } else {
             printf("%s\nError: type -h for help\n",VERSION);
             return (1);
         }
     }
     if (argc == 5) {
-        if ((!strcmp(argv[1], "-f"))&&(!strcmp(argv[3], "-m"))&&(atoi(argv[4])>0)&&(atoi(argv[4])<13)) {
-            return (tempMath(argv[2], atoi(argv[4])));
+        if ((!strcmp(argv[1], "-f")) && (!strcmp(argv[3], "-m")) && (atoi(argv[4]) > 0) && (atoi(argv[4]) < 13)) {
+            int len = strlen(argv[2]);
+            if (!strcmp(argv[2]+len-4, ".csv")) {
+                return (tempMath(argv[2], atoi(argv[4])));
+            } else {
+                printf("Error: file extension should be .csv");
+                return 1;
+            }
+
         } else {
             printf("%s\nError: type -h for help\n",VERSION);
             return (1);

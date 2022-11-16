@@ -125,7 +125,7 @@ int tempMath(char filename[], int monthNum) {
     FILE *f;
     int a = 0;
     char MONTH[13][10]={{""},{"January\0"},{"February\0"},{"March\0"},{"April\0"},{"May\0"},{"June\0"},{"July\0"},{"August\0"},{"September\0"},{"October\0"},{"November\0"},{"December\0"}};
-    char s[10000];
+    char s=1;
     short data[13][32][24][60] = {0};
     f = fopen(filename, "r");
     if (f == NULL) {
@@ -146,8 +146,10 @@ int tempMath(char filename[], int monthNum) {
             continue;
         } else if (a != EOF) {
             printf("Error at line %d\n", i);
-            fscanf(f, "%s", s);
-            //printf("%s\n",s);
+            while ((s!=10)&&(s!=-1)&&(s!=0)&&(a!=EOF)){
+                a=fscanf(f, "%c", &s);
+            }
+            s=1;
         }
     }
     fclose(f);
@@ -167,10 +169,15 @@ int tempMath(char filename[], int monthNum) {
         printf("Temperature of %s: med: %hi, min %hi, max %hi\n", MONTH[monthNum], medTempinMonth(data, monthNum),minTempinMonth(data, monthNum),maxTempinMonth(data, monthNum));
     }
 
-    printf("Temperature of %d: med: %hi, min %hi, max %hi\n", year, medTemp(data),minTemp(data),maxTemp(data));
+    if ((year>999) && (year<10000)) {
+        printf("Temperature of %d: med: %hi, min %hi, max %hi\n", year, medTemp(data), minTemp(data), maxTemp(data));
+        return 0;
+    } else{
+        printf("Error: no correct data in file");
+        return 1;
+    }
     //printf("%d minimum temp is %hi\n", year, minTemp(data));
     //printf("%d maximum temp is %hi\n", year, maxTemp(data));
 
-    return 0;
 
 }
