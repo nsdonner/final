@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "temp_functions.h"
-
+#define VERSION "v0.2"
 
 int main(int argc, char **argv) {
 
@@ -11,7 +11,7 @@ int main(int argc, char **argv) {
         return (1);
     }
     if (argc == 1) {
-        printf("Error: type -h for help");
+        printf("%s\nError: type -h for help\n",VERSION);
         return (1);
     }
     if (argc == 2) {
@@ -24,7 +24,7 @@ int main(int argc, char **argv) {
             printf("final.exe -f temperature_big.csv\n");
             printf("final.exe -f temperature_big.csv -m 5\n");
             return (0);
-        } else printf("Error: type -h for help");
+        } else printf("%s\nError: type -h for help\n",VERSION);
         return (1);
     }
     if (argc == 3) {
@@ -33,11 +33,11 @@ int main(int argc, char **argv) {
             if (!strcmp(argv[2]+len-4, ".csv")) {
                 return (tempMath(argv[2], 0));
             } else {
-                printf("Error: file extension should be .csv");
+                printf("Error: file extension should be .csv\n");
                 return 1;
             }
         } else {
-            printf("Error: type -h for help");
+            printf("%s\nError: type -h for help\n",VERSION);
             return (1);
         }
     }
@@ -47,12 +47,12 @@ int main(int argc, char **argv) {
             if (!strcmp(argv[2]+len-4, ".csv")) {
                 return (tempMath(argv[2], atoi(argv[4])));
             } else {
-                printf("Error: file extension should be .csv");
+                printf("Error: file extension should be .csv\n");
                 return 1;
             }
 
         } else {
-            printf("Error: type -h for help");
+            printf("%s\nError: type -h for help\n",VERSION);
             return (1);
         }
     }
