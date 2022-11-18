@@ -4,6 +4,7 @@
 #include "temp_functions.h"
 #define VERSION "v0.3"
 
+
 int main(int argc, char **argv) {
 
     if ((argc > 5) || (argc == 4)) {
