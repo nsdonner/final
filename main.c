@@ -4,7 +4,17 @@
 #include "temp_functions.h"
 #define VERSION "v0.3"
 
-
+/**
+ *
+ * @param argc
+ * @param argv
+ * @return
+ *
+ *  допустимые аргументы:
+ *  -h
+ *  -f filename.csv
+ *  -f filename.csv -m MONTHNUMBER
+ */
 int main(int argc, char **argv) {
 
     if ((argc > 5) || (argc == 4)) {
